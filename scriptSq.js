@@ -134,11 +134,12 @@ for (let i = 0; i < Object.keys(data.children).length - 1; i++) {
 
 
 // Sizing - independent
-let tw = 1500
-let th = 1000
+let tw = 1000
+//let th = 800
 let numX = 4
 // Sizing - DEPENDENT
 let numY = 12/numX
+let th = tw/numX*numY
 var paper = Raphael("canvas", tw+10 , th+10);
 let x = 10
 let x0 = x
@@ -161,7 +162,8 @@ let headline = [
     '11. Climate change & severe weather',
     '12. Other options'
 ]
-
+console.log(sumVal)
+console.log(w, h, w*h)
 // Create 
 for (let i = 0; i < 12; i++) {
     if (i % numX === 0 ) {
@@ -176,7 +178,9 @@ for (let i = 0; i < 12; i++) {
         fill: "#fff",
       }); 
     let factor = data['children'][i+1]['value']/sumVal
-    var innerRect = paper.rect(x,y+h-h*factor, w, h*factor);// if horisontal (x,y, w*factor, h) // if vertical (x,y+h-h*factor, w, h*factor)
+    console.log(factor)
+    let co = Math.sqrt(w*h*factor)
+    var innerRect = paper.rect(x+(w-co)/2,y+(h-co)/2,co,co);//(x+(w-w*factor)/2,y+(h-h*factor)/2,w*factor, h*factor);//(x,y+h-h*factor, w, h*factor);// if horisontal (x,y, w*factor, h) // if vertical (x,y+h-h*factor, w, h*factor)
 
     innerRect.attr({
         fill: colorList[i]
