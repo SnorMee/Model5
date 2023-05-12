@@ -134,8 +134,8 @@ for (let i = 0; i < Object.keys(data.children).length - 1; i++) {
 
 
 // Sizing - independent
-let tw = 1000
-let th = 800
+let tw = 1500
+let th = 1000
 let numX = 4
 // Sizing - DEPENDENT
 let numY = 12/numX
@@ -176,7 +176,7 @@ for (let i = 0; i < 12; i++) {
         fill: "#fff",
       }); 
     let factor = data['children'][i+1]['value']/sumVal
-    var innerRect = paper.rect(x+(w-w*factor)/2,y+(h-h*factor)/2,w*factor, h*factor);//(x,y+h-h*factor, w, h*factor);// if horisontal (x,y, w*factor, h) // if vertical (x,y+h-h*factor, w, h*factor)
+    var innerRect = paper.rect(x,y+h-h*factor, w, h*factor);// if horisontal (x,y, w*factor, h) // if vertical (x,y+h-h*factor, w, h*factor)
 
     innerRect.attr({
         fill: colorList[i]
